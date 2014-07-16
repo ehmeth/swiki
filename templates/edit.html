@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}ArticleName{% endblock %}
+{% block content %}
+    <h2>ArticleTitle!</h2>
+    <form method="post">
+    <label>
+        <div>Article content</div> <textarea name="content"></textarea>
+    </label>
+    <input type="submit">
+</form>
+{% endblock %}

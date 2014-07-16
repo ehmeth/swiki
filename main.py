@@ -12,6 +12,12 @@ from google.appengine.ext import db
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
 
+class Article(db.Model):
+    title = db.StringProperty(required = True)
+    content = db.TextProperty(required = True)
+    created = db.DateTimeProperty(auto_now_add = True)
+    last_modified = db.DateTimeProperty(auto_now = True)
+
 class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
@@ -23,11 +29,11 @@ class Handler(webapp2.RequestHandler):
 
 class Signup(Handler):
     def get(self):
-        self.write("Signup!")
+        self.render("signup.html")
 
 class Login(Handler):
     def get(self):
-        self.write("Login!")
+        self.render("login.html")
 
 class Logout(Handler):
     def get(self):
@@ -35,11 +41,11 @@ class Logout(Handler):
 
 class WikiPage(Handler):
     def get(self, entry):
-        self.write("%s WikiPage!" % entry)
+        self.render("article.html")
 
 class EditPage(Handler):
     def get(self, entry):
-        self.write("%s EditPage!" % entry)
+        self.render("edit.html")
 
 PAGE_RE = r'(/(?:[a-zA-Z0-9_-]+/?)*)'
 app = webapp2.WSGIApplication([('/signup', Signup),

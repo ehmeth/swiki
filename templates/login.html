@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+   <h2>Login!</h2>
+   <form action="/login" method="post">
+      <input name="authenticity_token" type="hidden" value="">
+      <label for="login_field">
+         Username or Email
+      </label>
+      <input id="login_field" name="login" tabindex="1" type="text">
+      <label for="password">
+         Password
+      </label>
+      <input id="password" name="password" tabindex="2" type="password">
+      <input name="commit" tabindex="3" type="submit" value="Sign in">
+   </form>
+{% endblock %}

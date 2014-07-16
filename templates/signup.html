@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+   <h2>Sign up!</h2>
+   <form action="/signup" method="post">
+      <input name="authenticity_token" type="hidden" value="">
+      <div>
+      <label for="email">
+         E-mail
+      </label>
+      <input id="email" name="email" tabindex="1" type="text">
+      </div>
+      <div>
+      <label for="login">
+         Username
+      </label>
+      <input id="login" name="login" tabindex="2" type="text">
+      </div>
+      <div>
+      <label for="password">
+         Password
+      </label>
+      <input id="password" name="password" tabindex="3" type="password">
+      </div>
+      <div>
+      <label for="confirm">
+         Confirm password
+      </label>
+      <input id="confirm" name="corfirm" tabindex="3" type="password">
+      </div>
+      <div>
+      <input name="commit" tabindex="5" type="submit" value="Sign up">
+      </div>
+   </form>
+{% endblock %}
